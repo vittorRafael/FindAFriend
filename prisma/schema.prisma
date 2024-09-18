@@ -29,14 +29,42 @@ model Org {
   @@map("orgs")
 }
 
+enum AGE {
+  Filhote
+  Adulto
+  Idoso
+}
+
+enum SIZE {
+  Pequenino
+  Pequeno
+  Medio
+  Grande
+  Gigante
+}
+
+enum ENERGY {
+  Sedentario
+  Calmo
+  Moderado
+  Ativo
+  Hiperativo
+}
+
+enum ENVIRONMENT {
+  Compacto
+  Medio
+  Amplo
+}
+
 model Pet {
-  id           String @id @default(uuid())
+  id           String      @id @default(uuid())
   name         String
   about        String
-  age          String
-  size         String
-  energy_level String
-  environment  String
+  age          AGE         @default(Filhote)
+  size         SIZE        @default(Pequenino)
+  energy_level ENERGY      @default(Moderado)
+  environment  ENVIRONMENT @default(Amplo)
   org_id       String
 
   org Org @relation(fields: [org_id], references: [id])

@@ -7,7 +7,7 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
   async create(data: Prisma.OrgCreateInput) {
     const org = {
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       name: data.name,
       author_name: data.author_name,
       email: data.email,
@@ -29,6 +29,13 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
   async findByEmail(email: string) {
     const org = this.items.find((item) => item.email === email);
+    if (!org) return null;
+
+    return org;
+  }
+
+  async findById(id: string) {
+    const org = this.items.find((item) => item.id === id);
     if (!org) return null;
 
     return org;
