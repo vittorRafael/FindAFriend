@@ -1,20 +1,22 @@
 {
-  "name": "example",
+  "name": "find-a-friend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.ts",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
-    "test:coverage": "vitest --coverage",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "vitest run --dir src/services",
+    "test:e2e": "vitest run --dir src/http",
+    "test:watch": "vitest --dir src/services",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Find A Friend App",
   "dependencies": {
     "@fastify/cookie": "^10.0.0",
     "@fastify/jwt": "^9.0.0",
