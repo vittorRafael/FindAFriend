@@ -1,12 +1,12 @@
-import { Pet } from "@prisma/client";
+import { AGE, ENERGY, ENVIRONMENT, Pet, SIZE } from "@prisma/client";
 import { PetsRepository } from "@/repositories/pets-repository";
 
 interface SearchPetsServicesRequest {
   city: string;
-  age?: string;
-  size?: string;
-  energy_level?: string;
-  environment?: string;
+  age?: AGE;
+  size?: SIZE;
+  energy_level?: ENERGY;
+  environment?: ENVIRONMENT;
 }
 
 interface SearchPetsServicesResponse {

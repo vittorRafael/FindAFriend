@@ -1,11 +1,11 @@
-import { Pet, Prisma } from "@prisma/client";
+import { AGE, ENERGY, ENVIRONMENT, Pet, Prisma, SIZE } from "@prisma/client";
 
 export interface FindAllParams {
   city: string;
-  age?: string;
-  size?: string;
-  energy_level?: string;
-  environment?: string;
+  age?: AGE;
+  size?: SIZE;
+  energy_level?: ENERGY;
+  environment?: ENVIRONMENT;
 }
 
 export interface PetsRepository {
