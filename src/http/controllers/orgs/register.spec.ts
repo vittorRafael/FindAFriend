@@ -24,8 +24,6 @@ describe("Register (e2e)", () => {
       latitude: -4.334747,
       longitude: -38.4744777,
     });
-
-
     expect(response.statusCode).toEqual(201);
   });
 });

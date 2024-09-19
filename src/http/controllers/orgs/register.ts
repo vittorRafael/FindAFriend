@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { OrgsAlreadyExistsError } from "@/services/errors/orgs-already-exists-error";
-import { makeRegisterServices } from "@/services/factories/makeRegisterServices";
+import { makeRegisterServices } from "@/services/factories/make-register-services";
 
 export const register = async (
   request: FastifyRequest,
