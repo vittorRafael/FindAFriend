@@ -7,14 +7,17 @@ export const create = async (request: FastifyRequest, reply: FastifyReply) => {
   const registerBodySchema = z.object({
     name: z.string(),
     about: z.string(),
-    age: z.string(),
-    size: z.string(),
-    energy_level: z.string(),
-    environment: z.string(),
-    orgId: z.string().uuid(),
+    age: z.enum(["Filhote", "Adulto", "Idoso"]).default("Filhote"),
+    size: z
+      .enum(["Pequenino", "Pequeno", "Medio", "Grande", "Gigante"])
+      .default("Pequenino"),
+    energy_level: z
+      .enum(["Sedentario", "Calmo", "Moderado", "Ativo", "Hiperativo"])
+      .default("Sedentario"),
+    environment: z.enum(["Compacto", "Medio", "Amplo"]).default("Amplo"),
   });
 
-  const { name, about, age, size, energy_level, environment, orgId } =
+  const { name, about, age, size, energy_level, environment } =
     registerBodySchema.parse(request.body);
 
   try {
@@ -26,7 +29,7 @@ export const create = async (request: FastifyRequest, reply: FastifyReply) => {
       size,
       energy_level,
       environment,
-      orgId,
+      orgId: request.user.sub,
     });
   } catch (error) {
     if (error instanceof ResourceNotFoundError)

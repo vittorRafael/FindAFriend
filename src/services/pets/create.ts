@@ -1,15 +1,15 @@
 import { OrgsRepository } from "@/repositories/orgs-repository";
 import { PetsRepository } from "@/repositories/pets-repository";
-import { Pet } from "@prisma/client";
+import { AGE, ENERGY, ENVIRONMENT, Pet, SIZE } from "@prisma/client";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface CreatePetServicesRequest {
   name: string;
   about: string;
-  age: string;
-  size: string;
-  energy_level: string;
-  environment: string;
+  age: AGE;
+  size: SIZE;
+  energy_level: ENERGY;
+  environment: ENVIRONMENT;
   orgId: string;
 }
 
