@@ -57,8 +57,6 @@ export const register = async (
     if (error instanceof OrgsAlreadyExistsError)
       return reply.status(409).send({ message: error.message });
 
-    console.log(error);
-
     throw error;
   }
 
